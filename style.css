@@ -1,0 +1,60 @@
+/* Standarts */
+:root {
+    font-size: 62.5%; /* To make 1 rem = 10 px */ 
+    --fw-300: 300;
+    --fw-600: 600;
+    --fw-800: 800;
+
+    --fs-300: 0.6875rem;
+    --fs-600: 0.8125rem;
+    --fs-800: 1.25rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Set core root defaults */
+html:focus-within {
+    scroll-behavior: smooth;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+    list-style: none;
+}
+
+/* Set core body defaults */
+body {
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
