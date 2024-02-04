@@ -266,7 +266,7 @@ nav {
 }
 
 .showcase-area {
-	padding-inline: .5rem;
+	padding-inline: 0.5rem;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	justify-content: center;
@@ -326,7 +326,7 @@ nav {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border-radius: .5rem;
+	border-radius: 0.5rem;
 	margin-top: 2rem;
 	position: relative;
 	z-index: 1;
@@ -335,6 +335,22 @@ nav {
 .disabled {
 	background-color: transparent;
 	color: transparent;
+}
+
+/* Select animation */
+.burguer {
+	transform: scale(1);
+	transition: transform 0.5s ease;
+}
+
+/* Scale up */
+.burguer:hover {
+	transform: scale(1.05);
+}
+
+/* Scale down */
+.burguer:not(:hover) {
+	transform: scale(0.95);
 }
 
 /* FOOTER */
@@ -348,6 +364,7 @@ nav {
 .footer p {
 	margin-left: auto;
 }
+
 /* 
 
 RESPONSIVE LAYOUT 
