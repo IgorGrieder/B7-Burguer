@@ -32,6 +32,7 @@
         </div>
     </header>
     <main>
+        <!-- BANNER -->
         <section class="banner-main container">
             <div class="banner-body">
                 <h1>O Hamburguer <br>mais delicioso. 😋</h1>
@@ -39,7 +40,20 @@
                 </p>
                 <a href="" class="btn">Fazer Pedido</a>
             </div>
-            <img src="imgs/heroBurger.png" alt="">
+            <img src="imgs/heroBurger.png" alt="Burguer photo" id="burguer-photo">
+        </section>
+        <!-- SEARCH AREA -->
+        <section class="search">
+            <div class="container">
+                <h4>Pesquise o seu hamburguer favorito</h4>
+                <form action="" method="get" class="search-options">
+                    <input type="search" name="hamburguer-name" id="hamburguer-name"
+                        placeholder="Digite o nome do hamburguer" autocomplete="off">
+                    <select name="hamburguer-category" id="hamburguer-category">
+                        <option value="" disabled selected>Selecione a categoria</option>
+                    </select>
+                </form>
+            </div>
         </section>
     </main>
     <footer></footer>
