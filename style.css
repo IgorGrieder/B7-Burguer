@@ -131,7 +131,7 @@ nav {
 	font-size: 1.5rem;
 }
 
-.header ul li a{
+.header ul li a {
 	text-decoration: none;
 	color: white;
 }
@@ -139,13 +139,64 @@ nav {
 .btn {
 	padding: 1rem 3rem;
 	border: 1px solid var(--color-white);
-	border-radius: .5rem;
+	border-radius: 0.5rem;
+	width: 16rem;
+	font-size: 1.5rem;
 }
 
 .header ul .btn {
 	margin-left: auto;
 }
 
+.header ul .btn:hover {
+	background-color: var(--color-orange);
+}
+
+/* BANNER MAIN */
+
+.banner-main {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.banner-body h1 {
+	font-size: 7rem;
+	font-family: var(--ff-calistoga);
+}
+
+.banner-body p{
+	margin-block: 3rem;
+	max-width: 40ch;
+	font-size: var(--fs-800);
+	font-weight: var(--fw-300);
+}
+
+.banner-body .btn {
+	background-color: var(--color-orange);
+	width: 25rem;
+}
+
+.banner-body .btn:hover{
+	background-color: var(--color-white);
+	color: var(--color-orange);
+}
+
+.banner-body a:hover {
+	color: var(--color-orange);
+}
+
+.banner-body a {
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	color: white;
+}
+
+.banner-body img {
+	position: relative;
+	z-index: -1;
+}
 
 /* 
 
