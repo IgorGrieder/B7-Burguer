@@ -248,7 +248,6 @@ nav {
 }
 
 .search-options input[type="search"] {
-	margin-right: 40rem;
 	padding-inline-start: 4rem;
 }
 
@@ -402,12 +401,20 @@ RESPONSIVE LAYOUT
 		margin-inline: auto;
 	}
 
+	.search h4 {
+		padding-inline: 1rem;
+	}
+
 	.search-options input[type="search"] {
 		margin-right: 2rem;
 	}
 
 	.showcase-area {
 		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.footer {
+		padding-inline: 1rem;
 	}
 }
 
