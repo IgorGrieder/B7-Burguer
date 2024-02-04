@@ -86,6 +86,11 @@ body {
 	margin-inline: auto;
 }
 
+footer {
+	padding-block: 3rem;
+	background-color: var(--color-darker-gray);
+}
+
 /* 
 
 CSS ELEMENTS
@@ -330,6 +335,18 @@ nav {
 .disabled {
 	background-color: transparent;
 	color: transparent;
+}
+
+/* FOOTER */
+
+.footer {
+	display: flex;
+	flex-direction: flex-start;
+	align-items: center;
+}
+
+.footer p {
+	margin-left: auto;
 }
 /* 
 
