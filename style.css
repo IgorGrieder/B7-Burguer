@@ -187,6 +187,7 @@ nav {
 
 .banner-body .btn:hover {
 	background-color: var(--color-white);
+	border-color: var(--color-orange);
 	color: var(--color-orange);
 }
 
@@ -372,5 +373,9 @@ RESPONSIVE LAYOUT
 */
 
 /* TABLET */
+
+@media (width <= 800px) {
+
+}
 
 /* MOBILE */
