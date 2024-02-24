@@ -500,3 +500,17 @@ RESPONSIVE LAYOUT
 	}
 
 }
+
+/* 
+
+SCRIPTING
+
+*/
+
+.model {
+	display: none;
+}
+
+.model .burguer {
+	display: none;
+}
