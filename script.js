@@ -1,6 +1,7 @@
 // Initital data
 const links = document.querySelectorAll("a");
 const showArea = document.querySelector(".showcase-area");
+const modalArea = document.querySelector(".modal");
 
 // ----------------------------- events -----------------------------
 showHamburguer();
@@ -29,6 +30,21 @@ function showHamburguer() {
 
         // changes the category
         newHamburguer.querySelector("h6").innerHTML = hamb.category;
+
+        // changes the cursor style
+        newHamburguer.style.cursor = "pointer";
+
+        newHamburguer.addEventListener("click", () => {
+
+
+
+
+
+
+
+            // shows the modal area
+            modalArea.style.display = "block";
+        })
 
         showArea.append(newHamburguer);
     }
