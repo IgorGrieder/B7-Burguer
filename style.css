@@ -565,6 +565,11 @@ nav {
 	display: none;
 }
 
+.custom-checkbox img.checked {
+	display: flex;
+}
+
+
 /* FOOTER */
 
 .footer {

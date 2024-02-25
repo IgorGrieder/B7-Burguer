@@ -8,9 +8,13 @@ let cartItems = [];
 // ----------------------------- events -----------------------------
 
 showHamburguer();
+
 links.forEach((item) => item.addEventListener("click", (event) => event.preventDefault()));
+
 modalArea.querySelector(".body-left span").addEventListener("click", () => closeModal());
+
 modalArea.querySelector("#cancelModal").addEventListener("click", () => closeModal());
+
 modalArea.querySelector("#minus-qte").addEventListener("click", () => {
     let count = parseInt(countModal.innerHTML);
     // sets a minimum of 1 unity
@@ -19,12 +23,15 @@ modalArea.querySelector("#minus-qte").addEventListener("click", () => {
         countModal.innerHTML = count;
     }
 });
+
 modalArea.querySelector("#plus-qte").addEventListener("click", () => {
     let count = parseInt(countModal.innerHTML);
     count++;
     countModal.innerHTML = count;
     
-})
+});
+
+// additions and price increment 
 modalArea.querySelectorAll(".add").forEach((item) => {
     item.querySelector(".custom-checkbox").addEventListener("click", () => {
         
@@ -33,19 +40,21 @@ modalArea.querySelectorAll(".add").forEach((item) => {
         let currentPrice = parseFloat(modalArea.querySelector(".price span").innerHTML);
 
         // filters is the user wants to select or not the item
-        if (item.querySelector(".custom-checkbox img").style.display === "") {
+        if (!(item.querySelector(".custom-checkbox img").classList.contains("checked"))) {
             // selects the current price 
             additions += parseFloat(item.querySelector(".add-text span").innerHTML);
             currentPrice += additions;
-            item.querySelector(".custom-checkbox img").style.display = "block";
+            item.querySelector(".custom-checkbox img").classList.add("checked");
         } else {
             additions -= parseFloat(item.querySelector(".add-text span").innerHTML);
             currentPrice += additions;
-            item.querySelector(".custom-checkbox img").style.display = "";
+            item.querySelector(".custom-checkbox img").classList.remove("checked");
         }
         modalArea.querySelector(".price span").innerHTML = currentPrice.toFixed(2);
     })
 });
+
+// add cart procedure
 modalArea.querySelector("#addCart").addEventListener("click", () => {
     // gather the informations to the cart
     let hamburguer = modalArea.querySelector(".body-right .title").innerHTML;
