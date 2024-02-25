@@ -367,7 +367,8 @@ nav {
 
 /* MODAL AREA */
 
-.modal {
+.modal,
+.cart-area {
 	display: none;
 	justify-content: center;
 	align-items: center;
@@ -381,7 +382,8 @@ nav {
 	transition: all ease .5s;
 }
 
-.modal-body {
+.modal-body,
+.cart-body {
 	display: flex;
 	gap: 0 10rem;
 	padding: 3rem 2rem;
@@ -409,7 +411,8 @@ nav {
 	align-self: center;
 }
 
-.body-left span {
+.body-left span,
+.cart-hamburguers span {
 	font-size: 4rem;
 	cursor: pointer;
 }
@@ -440,7 +443,8 @@ nav {
 	margin-bottom: 4rem;
 }
 
-.modal-body .price {
+.modal-body .price,
+.total-price {
 	font-size: 4rem;
 	color: var(--color-orange);
 	font-family: var(--ff-calistoga);
@@ -448,7 +452,9 @@ nav {
 }
 
 #addCart,
-#cancelModal{
+#cancelModal,
+#buyCart,
+#cancelCart{
 	margin-inline: auto;
 	border: none;
 	padding: 1rem 2rem;
@@ -466,23 +472,27 @@ nav {
 	border-radius: 2rem;
 }
 
-#addCart {
+#addCart,
+#buyCart{
 	background-color: var(--color-orange);
 	color: var(--color-white);
 	border: 1px solid var(--color-black);
 }
 
-#cancelModal {
+#cancelModal,
+#cancelCart {
 	background-color: transparent;
 	border: 1px solid var(--color-black);
 	margin-left: 4rem;
 }
 
-#addCart:hover {
+#addCart:hover,
+#buyCart:hover {
 	color: var(--color-black);
 }
 
-#cancelModal:hover {
+#cancelModal:hover,
+#cancelCart:hover {
 	color: var(--color-black);
 }
 
@@ -545,10 +555,6 @@ nav {
 	font-weight: var(--fw-300);
 }
 
-.add input[type="checkbox"] {
-	display: none;
-}
-
 .custom-checkbox {
 	display: flex;
 	align-items: center;
@@ -569,6 +575,53 @@ nav {
 	display: flex;
 }
 
+/* CART AREA */
+
+.cart-area {
+	display: none;
+}
+
+.cart-body {
+	flex-direction: column;
+	width: 600px;
+}
+
+.burguer-cart {
+	display: flex;
+	align-items: center;
+	margin-top: 2rem;
+}
+
+.burguer-cart .title {
+	margin-left: 4rem;
+}
+
+.burguer-cart .hamb-qte {
+	margin-left: auto;
+	width: auto;
+}
+
+.burguer-cart img {
+	width: 10rem;
+}
+
+.total-price {
+	margin-top: 2rem;
+}
+
+.cart-buttons {
+	display: flex;
+	justify-content: center;
+}
+
+#buyCart,
+#cancelCart {
+	margin: 0;
+}
+
+#cancelCart {
+	margin-left: 4rem;
+}
 
 /* FOOTER */
 

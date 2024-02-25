@@ -2,19 +2,24 @@
 const links = document.querySelectorAll("a");
 const showArea = document.querySelector(".showcase-area");
 const modalArea = document.querySelector(".modal");
+const cartArea = document.querySelector(".cart-area");
 const countModal = document.querySelector("#selected-qte");
+const cartDisplay = document.querySelector(".cart-hamburguers");
 let cartItems = [];
 
 // ----------------------------- events -----------------------------
 
+// intialize the show case area
 showHamburguer();
 
+// prevent a tags to reload the page
 links.forEach((item) => item.addEventListener("click", (event) => event.preventDefault()));
 
+// close the modal on the buttons
 modalArea.querySelector(".body-left span").addEventListener("click", () => closeModal());
-
 modalArea.querySelector("#cancelModal").addEventListener("click", () => closeModal());
 
+// decrease count in the modal
 modalArea.querySelector("#minus-qte").addEventListener("click", () => {
     let count = parseInt(countModal.innerHTML);
     // sets a minimum of 1 unity
@@ -24,6 +29,7 @@ modalArea.querySelector("#minus-qte").addEventListener("click", () => {
     }
 });
 
+// increase count in the modal
 modalArea.querySelector("#plus-qte").addEventListener("click", () => {
     let count = parseInt(countModal.innerHTML);
     count++;
@@ -142,6 +148,11 @@ function showHamburguer() {
     }
 }
 
+// update the cart
+function updateCart() {
+
+}
+
 // close the modal
 function closeModal() {
     // close the modal
@@ -155,4 +166,19 @@ function openModal() {
    modalArea.style.opacity = "0";
    modalArea.style.display = "flex";
    setTimeout(() => modalArea.style.opacity = "1", 200);
+}
+
+// close the cart
+function closeCart() {
+    // close the cart
+    cartArea.style.opacity = "0";
+    setTimeout(() => cartArea.style.display = "none", 200);
+}
+
+// open the cart
+function openCart() {
+   // display the cart
+   cartArea.style.opacity = "0";
+   cartArea.style.display = "flex";
+   setTimeout(() => cartArea.style.opacity = "1", 200);
 }
