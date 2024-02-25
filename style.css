@@ -154,7 +154,7 @@ nav {
 	padding: 1rem 3rem;
 	border: 1px solid var(--color-white);
 	border-radius: 0.5rem;
-	width: 16rem;
+	width: 18rem;
 	font-size: 1.5rem;
 }
 
@@ -284,6 +284,7 @@ nav {
 .burguer {
 	display: flex;
 	flex-direction: column;
+	cursor: pointer;
 }
 
 .burguer > * {
@@ -367,7 +368,7 @@ nav {
 /* MODAL AREA */
 
 .modal {
-	display: flex;
+	display: none;
 	justify-content: center;
 	align-items: center;
 	position: fixed;
@@ -377,12 +378,14 @@ nav {
 	bottom: 0;
 	z-index: 1;
 	background-color: rgba(0, 0, 0, 0.2);
+	transition: all ease .5s;
 }
 
 .modal-body {
 	display: flex;
 	gap: 0 10rem;
 	padding: 3rem 2rem;
+	border-radius: 5rem;
 	width: 1100px;
 	max-height: 80%;
 	background-color: var(--color-white);
@@ -395,7 +398,6 @@ nav {
 .modal-body .body-left {
 	flex: 1;
 	display: flex;
-	align-items: center;
 }
 
 .modal-body .body-right {
@@ -404,6 +406,12 @@ nav {
 
 .body-left img {
 	width: 100%;
+	align-self: center;
+}
+
+.body-left span {
+	font-size: 4rem;
+	cursor: pointer;
 }
 
 .modal-body .title,
@@ -439,13 +447,23 @@ nav {
 	margin-bottom: 3rem;
 }
 
-.modal-body button {
+#addCart,
+#cancelModal{
 	margin-inline: auto;
 	border: none;
 	padding: 1rem 2rem;
 	border-radius: 4rem;
 	cursor: pointer;
 	margin-block: 3rem;
+}
+
+#promoCart {
+	display: none;
+	margin-left: 5rem;
+	border: 1px solid var(--color-black);
+	padding: 1rem 2rem;
+	font-size: 1.6rem;
+	border-radius: 2rem;
 }
 
 #addCart {
@@ -483,6 +501,24 @@ nav {
 	height: 8rem;
 	font-size: var(--fs-600);
 	padding: 1rem;
+}
+
+.hamb-qte {
+	display: flex;
+	align-items: center;
+	width: 15rem;
+	gap: 1rem;
+}
+
+.hamb-qte button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 2.5rem;
+	background-color: transparent;
+	border: 1px solid var(--color-black);
+	border-radius: 1rem;
+	cursor: pointer;
 }
 
 .additions {
