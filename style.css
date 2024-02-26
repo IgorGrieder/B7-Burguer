@@ -388,7 +388,7 @@ nav {
 	gap: 0 10rem;
 	padding: 3rem 2rem;
 	border-radius: 5rem;
-	width: 1100px;
+	max-width: 1100px;
 	max-height: 80%;
 	height: 100%;
 	background-color: var(--color-white);
@@ -413,7 +413,7 @@ nav {
 }
 
 .body-left span,
-.cart-hamburguers span {
+.cart-area span {
 	font-size: 4rem;
 	cursor: pointer;
 }
@@ -554,6 +554,7 @@ nav {
 
 .add-text {
 	font-weight: var(--fw-300);
+	text-align: left;
 }
 
 .custom-checkbox {
@@ -574,6 +575,7 @@ nav {
 
 .custom-checkbox img.checked {
 	display: flex;
+	max-width: 100%;
 }
 
 /* CART AREA */
@@ -721,6 +723,27 @@ RESPONSIVE LAYOUT
 	.burguer {
 		scale: 1;
 	}
+
+	.modal-body {
+		flex-direction: column;
+		align-items: center;
+		margin-inline: 3rem;
+		text-align: center;
+	}
+	
+	.cart-body {
+		margin-inline: 3rem;
+	}
+
+	.body-left{
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.modal #addCart,
+	.modal #cancelModal {
+		margin: 1rem auto;
+	}
 }
 
 /* MOBILE */
@@ -766,4 +789,79 @@ RESPONSIVE LAYOUT
 		margin-left: 0;
 	}
 
+	.modal,
+	.cart-area {
+		font-size: 1.2rem;
+	}
+
+	.modal > *,
+	.cart-area > * {
+		font-size: inherit;
+	} 
+
+	.modal .title {
+		font-size: 3rem;
+	}
+
+	.modal .desc {
+		justify-content: center;
+		max-width: 80%;
+	}
+	.modal img {
+		max-width: 180px;
+	}
+
+	.modal-body {
+		flex-direction: column;
+		align-items: center;
+		margin-inline: 3rem;
+		text-align: center;
+	}
+	
+	.cart-body {
+		margin-inline: 3rem;
+	}
+
+	.body-left{
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.modal #addCart,
+	.modal #cancelModal {
+		margin: 1rem auto;
+	}
+
+	.body-right {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.body-right .price {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.body-right #promoCart {
+		margin-inline: 0;
+	}
+
+	.body-right .additions {
+		width: 100%;
+		margin-inline: 1rem;
+	}
+
+	.hamb-qte {
+		justify-content: center;
+	}
+
+	.details {
+		align-items: center;
+	}
+
+	.details textarea {
+		width: 100%;
+		min-height: 10rem;
+	}
 }
