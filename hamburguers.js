@@ -8,7 +8,7 @@ let hamburguers = [
         img: "imgs/burger1.png"
     },
     { 
-        name: "X-Burger",
+        name: "X-Burguer",
         category: "Podrão",
         desc: "Pão fofinho, carne de 90g com aquela mussarela derretida por cima, alface, tomate fresco, milho, batata palha crocante e molho rosé da casa.",
         price: [18.90, 15.60],

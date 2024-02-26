@@ -5,6 +5,9 @@ const modalArea = document.querySelector(".modal");
 const cartArea = document.querySelector(".cart-area");
 const countModal = document.querySelector("#selected-qte");
 const cartDisplay = document.querySelector(".cart-hamburguers");
+const clearFilter = document.querySelector("#clearFilter");
+const selectElement = document.getElementById("hamburguer-category");
+
 let cartItems = [];
 
 // ----------------------------- events -----------------------------
@@ -71,7 +74,7 @@ modalArea.querySelectorAll(".add").forEach((item) => {
 modalArea.querySelector("#addCart").addEventListener("click", () => {
     // gather the informations to the cart
     const hamburguer = modalArea.querySelector(".body-right .title").innerHTML;
-    const count = modalArea.querySelector("#selected-qte").innerHTML;
+    const count = parseInt(modalArea.querySelector("#selected-qte").innerHTML);
     const price = modalArea.querySelector(".price span").innerHTML;
     const img = modalArea.querySelector("img").src;
     const additions = [];
@@ -98,6 +101,217 @@ modalArea.querySelector("#addCart").addEventListener("click", () => {
     closeModal();
     updateCart();
     openCart();
+});
+
+// clear the filters from the form
+clearFilter.addEventListener("click", () => {
+
+    // reset the input and selection value
+    document.querySelector('input[type="search"]').value = "";
+    selectElement.value = "standart";
+    showArea.innerHTML = "";
+
+    // shows the standart hamburguers
+    showHamburguer();
+
+    // hide the button
+    clearFilter.style.display = "none";
+});
+
+// select filter os category
+selectElement.addEventListener("change", () => {
+    // Get the selected option
+    const selectedOption = selectElement.options[selectElement.selectedIndex];
+
+    // empty the area and show the clear button
+    showArea.innerHTML = "";
+    clearFilter.style.display = "flex";
+
+    // Check the value of the selected option
+    if (selectedOption.value === "Artesanal") {
+        for (const hamburguer of hamburguers) {
+            if (hamburguer.category === "Artesanal"){
+                // clones the hamburguer model in the HTML
+                const newHamburguer = document.querySelector(".model .burguer").cloneNode(true);
+
+                //checks if it needs the special promo
+                if (hamburguer.promoPrice) {
+                    newHamburguer.querySelector(".bottom h4 span").innerHTML = hamburguer.price[1].toFixed(2);
+                } else {
+                    // sets a non promo price and disables the promo indicator
+                    newHamburguer.querySelector(".bottom h4 span").innerHTML = hamburguer.price[0].toFixed(2);
+                    newHamburguer.querySelector(".promo").classList.add("disabled");
+                }
+
+                // changes the image
+                newHamburguer.querySelector("img").src = hamburguer.img;
+
+                // changes the name
+                newHamburguer.querySelector("h4:nth-child(2)").innerHTML = hamburguer.name.toUpperCase();
+
+                // changes the category
+                newHamburguer.querySelector("h6").innerHTML = hamburguer.category;
+
+                newHamburguer.addEventListener("click", () => {
+
+                    // changes the image
+                    modalArea.querySelector("img").src = hamburguer.img;
+
+                    // changes the name
+                    modalArea.querySelector(".body-right .title").innerHTML = hamburguer.name;
+
+                    // changes the discription 
+                    modalArea.querySelector(".desc").innerHTML = hamburguer.desc;
+
+                    // changes the category
+                    modalArea.querySelector(".category").innerHTML = hamburguer.category;
+
+                    // changes the price
+                    if (hamburguer.promoPrice) {
+                        modalArea.querySelector("#promoCart").style.display = "inline-block";
+                        modalArea.querySelector(".price span").innerHTML = hamburguer.price[1].toFixed(2);
+                    } else modalArea.querySelector(".price span").innerHTML = hamburguer.price[0].toFixed(2);
+
+                        // resets the areas
+                        modalArea.querySelectorAll(".add").forEach((item) => item.querySelector(".custom-checkbox img").classList.remove("checked"));
+                        modalArea.querySelector("textarea").value = "";
+            
+                    openModal();
+                });
+                showArea.append(newHamburguer);
+            }
+        }
+    } else if (selectedOption.value === "Podrão") {
+        for (const hamburguer of hamburguers) {
+            if (hamburguer.category === "Podrão"){
+                // clones the hamburguer model in the HTML
+                const newHamburguer = document.querySelector(".model .burguer").cloneNode(true);
+
+                //checks if it needs the special promo
+                if (hamburguer.promoPrice) {
+                    newHamburguer.querySelector(".bottom h4 span").innerHTML = hamburguer.price[1].toFixed(2);
+                } else {
+                    // sets a non promo price and disables the promo indicator
+                    newHamburguer.querySelector(".bottom h4 span").innerHTML = hamburguer.price[0].toFixed(2);
+                    newHamburguer.querySelector(".promo").classList.add("disabled");
+                }
+
+                // changes the image
+                newHamburguer.querySelector("img").src = hamburguer.img;
+
+                // changes the name
+                newHamburguer.querySelector("h4:nth-child(2)").innerHTML = hamburguer.name.toUpperCase();
+
+                // changes the category
+                newHamburguer.querySelector("h6").innerHTML = hamburguer.category;
+
+                newHamburguer.addEventListener("click", () => {
+
+                    // changes the image
+                    modalArea.querySelector("img").src = hamburguer.img;
+
+                    // changes the name
+                    modalArea.querySelector(".body-right .title").innerHTML = hamburguer.name;
+
+                    // changes the discription 
+                    modalArea.querySelector(".desc").innerHTML = hamburguer.desc;
+
+                    // changes the category
+                    modalArea.querySelector(".category").innerHTML = hamburguer.category;
+
+                    // changes the price
+                    if (hamburguer.promoPrice) {
+                        modalArea.querySelector("#promoCart").style.display = "inline-block";
+                        modalArea.querySelector(".price span").innerHTML = hamburguer.price[1].toFixed(2);
+                    } else modalArea.querySelector(".price span").innerHTML = hamburguer.price[0].toFixed(2);
+
+                        // resets the areas
+                        modalArea.querySelectorAll(".add").forEach((item) => item.querySelector(".custom-checkbox img").classList.remove("checked"));
+                        modalArea.querySelector("textarea").value = "";
+            
+                    openModal();
+                });
+                showArea.append(newHamburguer);
+            }
+        }
+    }
+});
+
+// to prevent the page reload when interacting to the form
+document.querySelector("form").addEventListener("submit", (event) => event.preventDefault());
+
+// event to filter the hamburguers
+document.querySelector('input[type="search"]').addEventListener("keyup", (event) => {
+    if (event.key === "Enter") {
+        // show the clear button
+        clearFilter.style.display = "flex";
+
+        let text = document.querySelector('input[type="search"]').value;
+        
+        let hamburguer = hamburguers.find((item) => item.name.toLowerCase() === text.toLowerCase());
+        showArea.innerHTML = "";
+
+        // early return if its undefined
+        if (hamburguer === undefined) {
+
+            // if the hamburguer is not found it displays a warning message to the user
+            let warningText = document.createElement("p");
+            warningText.innerHTML = "Hamburguer não encontrado, tente novamente"
+            warningText.style.fontSize = "3rem";
+            warningText.style.width = "100%";
+            showArea.append(warningText);
+            return
+        }
+
+        // clones the hamburguer model in the HTML
+        const newHamburguer = document.querySelector(".model .burguer").cloneNode(true);
+
+        //checks if it needs the special promo
+        if (hamburguer.promoPrice) {
+            newHamburguer.querySelector(".bottom h4 span").innerHTML = hamburguer.price[1].toFixed(2);
+        } else {
+            // sets a non promo price and disables the promo indicator
+            newHamburguer.querySelector(".bottom h4 span").innerHTML = hamburguer.price[0].toFixed(2);
+            newHamburguer.querySelector(".promo").classList.add("disabled");
+        }
+
+        // changes the image
+        newHamburguer.querySelector("img").src = hamburguer.img;
+
+        // changes the name
+        newHamburguer.querySelector("h4:nth-child(2)").innerHTML = hamburguer.name.toUpperCase();
+
+        // changes the category
+        newHamburguer.querySelector("h6").innerHTML = hamburguer.category;
+
+        newHamburguer.addEventListener("click", () => {
+
+            // changes the image
+            modalArea.querySelector("img").src = hamburguer.img;
+
+            // changes the name
+            modalArea.querySelector(".body-right .title").innerHTML = hamburguer.name;
+
+            // changes the discription 
+            modalArea.querySelector(".desc").innerHTML = hamburguer.desc;
+
+            // changes the category
+            modalArea.querySelector(".category").innerHTML = hamburguer.category;
+
+            // changes the price
+            if (hamburguer.promoPrice) {
+                modalArea.querySelector("#promoCart").style.display = "inline-block";
+                modalArea.querySelector(".price span").innerHTML = hamburguer.price[1].toFixed(2);
+            } else modalArea.querySelector(".price span").innerHTML = hamburguer.price[0].toFixed(2);
+
+            // resets the areas
+            modalArea.querySelectorAll(".add").forEach((item) => item.querySelector(".custom-checkbox img").classList.remove("checked"));
+            modalArea.querySelector("textarea").value = "";
+            
+            openModal();
+        });
+        showArea.append(newHamburguer);
+    }
 });
 
 // ----------------------------- functions -----------------------------
@@ -187,14 +401,22 @@ function updateCart() {
                 count--;
                 hamb.count = count;
                 newHamburguer.querySelector("#selected-qte-cart").innerHTML = hamb.count;
+                updateCart();
             } else if (count === 1) {
                 count--;
                 hamb.count = count;
+                newHamburguer.querySelector("#selected-qte-cart").innerHTML = hamb.count;
 
                 // removes new hamburguer if the unity is less then 1
-                cartDisplay.remove(newHamburguer);
+                newHamburguer.remove();
+
+                let removeItem = cartItems.findIndex((item) => item.hamburguer === newHamburguer.querySelector(".title").innerHTML);
+                if (removeItem !== -1) {
+                    cartItems.splice(removeItem, 1);
+                }
+
+                updateCart();
             }
-            updateCart();
         });
 
         newHamburguer.querySelector("#plus-qte-cart").addEventListener("click", () => {
@@ -205,11 +427,11 @@ function updateCart() {
             updateCart();
         });
 
-        cartArea.querySelector(".total-price span").innerHTML = price.toFixed(2);
-
+        
         // add the hamburguer to the cart display
         cartDisplay.append(newHamburguer);
     }
+    cartArea.querySelector(".total-price span").innerHTML = price.toFixed(2);
 }
 
 // close the modal

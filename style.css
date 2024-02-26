@@ -239,7 +239,8 @@ nav {
 }
 
 .search-options input[type="search"],
-.search-options select {
+.search-options select,
+#clearFilter {
 	-webkit-appearance: none; /* Removing default styles in Safari/Chrome */
 	appearance: none;
 	background-color: var(--color-medium-gray);
@@ -249,6 +250,19 @@ nav {
 	border: none;
 	border-radius: 5px;
 	width: 30rem;
+}
+
+#clearFilter {
+	display: none;
+	justify-content: center;
+	width: 10rem;
+	margin-left: 5rem;
+	cursor: pointer;
+}
+
+#clearFilter:hover {
+	background-color: var(--color-orange);
+	color: var(--color-white);
 }
 
 .search-options input[type="search"] {
