@@ -19,6 +19,14 @@ links.forEach((item) => item.addEventListener("click", (event) => event.preventD
 modalArea.querySelector(".body-left span").addEventListener("click", () => closeModal());
 modalArea.querySelector("#cancelModal").addEventListener("click", () => closeModal());
 
+// close the cart on the buttons
+cartArea.querySelector("#closeCart").addEventListener("click", () => closeCart());
+cartArea.querySelector("#cancelCart").addEventListener("click", () => closeCart());
+
+// open cart are
+document.querySelector("li.btn").addEventListener("click", () => openCart());
+document.querySelector("a.btn").addEventListener("click", () => openCart());
+
 // decrease count in the modal
 modalArea.querySelector("#minus-qte").addEventListener("click", () => {
     let count = parseInt(countModal.innerHTML);
@@ -34,7 +42,6 @@ modalArea.querySelector("#plus-qte").addEventListener("click", () => {
     let count = parseInt(countModal.innerHTML);
     count++;
     countModal.innerHTML = count;
-    
 });
 
 // additions and price increment 
@@ -63,21 +70,21 @@ modalArea.querySelectorAll(".add").forEach((item) => {
 // add cart procedure
 modalArea.querySelector("#addCart").addEventListener("click", () => {
     // gather the informations to the cart
-    let hamburguer = modalArea.querySelector(".body-right .title").innerHTML;
-    let count = modalArea.querySelector("#selected-qte").innerHTML;
-    let price = modalArea.querySelector(".price span").innerHTML;
-    let img = modalArea.querySelector("img").src;
-    let additions = [];
-    let obs = modalArea.querySelector("textarea").value;
+    const hamburguer = modalArea.querySelector(".body-right .title").innerHTML;
+    const count = modalArea.querySelector("#selected-qte").innerHTML;
+    const price = modalArea.querySelector(".price span").innerHTML;
+    const img = modalArea.querySelector("img").src;
+    const additions = [];
+    const obs = modalArea.querySelector("textarea").value;
 
     // insert the additions
     modalArea.querySelectorAll(".add").forEach( (item) => {
-        if (item.querySelector(".custom-checkbox img").style.display === "block") {
+        if (item.querySelector(".custom-checkbox img").classList.contains("checked")) {
             additions.push((item.querySelector(".add-text").innerHTML.split(" ")[0]));
         }
     });
 
-    let newHamburguerItem = {
+    const newHamburguerItem = {
         hamburguer,
         count,
         price,
@@ -89,13 +96,15 @@ modalArea.querySelector("#addCart").addEventListener("click", () => {
     cartItems.push(newHamburguerItem);
     
     closeModal();
+    updateCart();
+    openCart();
 });
 
 // ----------------------------- functions -----------------------------
 
 // show the habmburguers of the data base
 function showHamburguer() {
-    for (let hamb of hamburguers) {
+    for (const hamb of hamburguers) {
         // clones the hamburguer model in the HTML
         const newHamburguer = document.querySelector(".model .burguer").cloneNode(true);
 
@@ -150,7 +159,57 @@ function showHamburguer() {
 
 // update the cart
 function updateCart() {
+    // resets the price and the display area
+    let price = 0;
+    cartDisplay.innerHTML = "";
 
+    for (const hamb of cartItems) {
+        // create a copy of the model
+        const newHamburguer = document.querySelector(".model .burguer-cart").cloneNode(true);
+
+        // set a image
+        newHamburguer.querySelector("img").src = hamb.img;
+
+        // set the hamburguer
+        newHamburguer.querySelector(".title").innerHTML = hamb.hamburguer;
+
+        // set the count
+        newHamburguer.querySelector("#selected-qte-cart").innerHTML = hamb.count;
+
+        // increment the price
+        price += parseFloat(hamb.price) * parseInt(hamb.count);
+
+        // buttons to control quantity
+        newHamburguer.querySelector("#minus-qte-cart").addEventListener("click", () => {
+            let count = parseInt(newHamburguer.querySelector("#selected-qte-cart").innerHTML);
+            // sets a minimum of 1 unity
+            if (count > 1) {
+                count--;
+                hamb.count = count;
+                newHamburguer.querySelector("#selected-qte-cart").innerHTML = hamb.count;
+            } else if (count === 1) {
+                count--;
+                hamb.count = count;
+
+                // removes new hamburguer if the unity is less then 1
+                cartDisplay.remove(newHamburguer);
+            }
+            updateCart();
+        });
+
+        newHamburguer.querySelector("#plus-qte-cart").addEventListener("click", () => {
+            let count = parseInt(newHamburguer.querySelector("#selected-qte-cart").innerHTML);
+            count++;
+            hamb.count = count;
+            newHamburguer.querySelector("#selected-qte-cart").innerHTML = hamb.count;
+            updateCart();
+        });
+
+        cartArea.querySelector(".total-price span").innerHTML = price.toFixed(2);
+
+        // add the hamburguer to the cart display
+        cartDisplay.append(newHamburguer);
+    }
 }
 
 // close the modal
