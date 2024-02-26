@@ -615,6 +615,7 @@ nav {
 .cart-buttons {
 	display: flex;
 	justify-content: center;
+	margin-top: auto;
 }
 
 #buyCart,
@@ -863,5 +864,27 @@ RESPONSIVE LAYOUT
 	.details textarea {
 		width: 100%;
 		min-height: 10rem;
+	}
+
+	.cart-buttons {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.cart-buttons .total-price {
+		font-size: 2rem;
+	}
+
+	.burguer-cart .title {
+		margin-left: 1rem;
+	}
+
+	.burguer-cart img {
+		width: 8rem;
+	}
+
+	.cart-buttons #cancelCart {
+		margin-top: 2rem;
+		margin-inline: 0;
 	}
 }

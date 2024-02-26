@@ -147,7 +147,7 @@ function showHamburguer() {
             } else modalArea.querySelector(".price span").innerHTML = hamb.price[0].toFixed(2);
 
             // resets the areas
-            modalArea.querySelectorAll(".add").forEach((item) => item.querySelector(".custom-checkbox img").style.display = "");
+            modalArea.querySelectorAll(".add").forEach((item) => item.querySelector(".custom-checkbox img").classList.remove("checked"));
             modalArea.querySelector("textarea").value = "";
             
             openModal();
